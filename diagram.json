@@ -1,0 +1,55 @@
+{
+  "version": 1,
+  "author": "Anwesha Pattanaik",
+  "editor": "wokwi",
+  "parts": [
+    {
+      "type": "wokwi-arduino-uno",
+      "id": "uno",
+      "top": 69.8,
+      "left": -25.8,
+      "rotate": 270,
+      "attrs": {}
+    },
+    { "type": "wokwi-led", "id": "led1", "top": 121.2, "left": -73, "attrs": { "color": "red" } },
+    {
+      "type": "wokwi-pushbutton",
+      "id": "btn1",
+      "top": 255.8,
+      "left": -115.2,
+      "attrs": { "color": "green", "xray": "1" }
+    },
+    { "type": "wokwi-mpu6050", "id": "imu1", "top": -15.38, "left": 223.12, "attrs": {} },
+    {
+      "type": "wokwi-lcd1602",
+      "id": "lcd1",
+      "top": 150.4,
+      "left": 312.8,
+      "attrs": { "pins": "i2c" }
+    },
+    {
+      "type": "wokwi-buzzer",
+      "id": "bz1",
+      "top": 50.4,
+      "left": -199.8,
+      "attrs": { "volume": "0.1" }
+    }
+  ],
+  "connections": [
+    [ "imu1:VCC", "uno:5V", "red", [ "v0" ] ],
+    [ "imu1:GND", "uno:GND.2", "black", [ "v0" ] ],
+    [ "imu1:SDA", "uno:A4", "gray", [ "v0" ] ],
+    [ "imu1:SCL", "uno:A5", "blue", [ "v0" ] ],
+    [ "uno:5V", "lcd1:VCC", "orange", [ "h0" ] ],
+    [ "lcd1:GND", "uno:GND.3", "black", [ "h0" ] ],
+    [ "led1:A", "uno:13", "orange", [ "v0" ] ],
+    [ "led1:C", "uno:GND.1", "black", [ "v0" ] ],
+    [ "led1:C", "btn1:1.l", "black", [ "v0" ] ],
+    [ "btn1:2.r", "uno:7", "magenta", [ "h0" ] ],
+    [ "lcd1:SDA", "uno:A4", "gray", [ "h0" ] ],
+    [ "lcd1:SCL", "uno:A5", "blue", [ "h0" ] ],
+    [ "bz1:1", "uno:GND.1", "green", [ "v0" ] ],
+    [ "bz1:2", "uno:8", "green", [ "v0" ] ]
+  ],
+  "dependencies": {}
+}
